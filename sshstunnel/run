@@ -1,3 +1,5 @@
 wget https://github.com/githubaunglaymyanmar/sshinstall/raw/refs/heads/main/sshstunnel/installngrok &> /dev/null
 bash installngrok &> /dev/null
+apt install net-tools -y &> /dev/null
+netstat -nltp
 ngrok tcp 7777
