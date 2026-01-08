@@ -14,7 +14,7 @@ printf "aunglay\naunglay" | passwd root &> /dev/null
 apt install stunnel4 wget -y &> /dev/null
 rm -rf stunnel.pem stunnel.conf stunnel4
 wget https://github.com/githubaunglaymyanmar/fordownload/raw/main/stunnel/stunnel.pem
-wget https://github.com/githubaunglaymyanmar/fordownload/raw/main/stunnel/stunnel.conf
+wget https://github.com/githubaunglaymyanmar/sshinstall/raw/refs/heads/main/sshstunnel/stunnel.conf
 wget https://github.com/githubaunglaymyanmar/fordownload/raw/main/stunnel/stunnel4
 mv stunnel.pem stunnel.conf /etc/stunnel
 mv stunnel4 /etc/default
