@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Prompt user for input
+read -p "Enter ngrok address (e.g. tcp://2.tcp.ngrok.io:19239): " input
+
+# Strip tcp:// prefix if present
+connect="${input#tcp://}"
+
+# Generate stunnel config
+cat <<EOF > /etc/stunnel/stunnel.conf
+cert=/etc/stunnel/stunnel.pem
+key=/etc/stunnel/stunnel.pem
+pid=/var/run/stunnel4/stunnel.pid
+
+client=yes
+[Stunnel tls key]
+
+accept = 9999
+connect = $connect
+EOF
+
+echo "stunnel.conf created with connect = $connect"
+
+
+service stunnel4 restart
+
+rm -rf ~/.ssh
+
+
+sshpass -p 'aunglay' ssh -o StrictHostKeyChecking=no -D 1080 root@localhost -p 9999 -t ping google.com
+
+
+
+
