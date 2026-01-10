@@ -22,34 +22,7 @@ service stunnel4 restart
 
 
 
-rm -rf /root/.cloudflared
-mkdir -p /root/.cloudflared
 
-cat <<'EOF' > /root/.cloudflared/cert.pem
------BEGIN ARGO TUNNEL TOKEN-----
-eyJ6b25lSUQiOiI3ZGQ4Njg1MjM4YTVkYjAxYjljZjExZDRjYzFjMWZjMyIsImFj
-Y291bnRJRCI6IjM3MGU0ZjNhODM1ZmVlN2M5NTMwYmFiZTVmMTMwY2U4IiwiYXBp
-VG9rZW4iOiJITUlTZEpzMXR2OWc4aHB1UVNwUW1mcnFycHNKcGRBcGxOOXgtcm84
-In0=
------END ARGO TUNNEL TOKEN-----
-EOF
-
-cat <<'EOF' > /root/.cloudflared/cd35af2f-a793-4f20-bbb0-38dd740a160c.json
-{"AccountTag":"370e4f3a835fee7c9530babe5f130ce8","TunnelSecret":"ig32kHYv5QQMsdIoGpChBZHNi4D2zD1y/Pxv9FtN8v8=","TunnelID":"cd35af2f-a793-4f20-bbb0-38dd740a160c","Endpoint":""}
-EOF
-
-cat <<'EOF' > /root/.cloudflared/config.yml
-tunnel: cd35af2f-a793-4f20-bbb0-38dd740a160c
-credentials-file: /root/.cloudflared/cd35af2f-a793-4f20-bbb0-38dd740a160c.json
-
-ingress:
-  - hostname: connect1.aung1.xyz
-    service: tcp://localhost:22
-    originRequest:
-        noTLSVerify : true
-  - service: http_status:404
-
-EOF
 
 
 # Add cloudflare gpg key
