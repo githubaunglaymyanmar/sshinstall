@@ -24,7 +24,7 @@ credentials-file: /root/.cloudflared/cd35af2f-a793-4f20-bbb0-38dd740a160c.json
 
 ingress:
   - hostname: connect1.aung1.xyz
-    service: tcp://localhost:22
+    service: tcp://localhost:7777
     originRequest:
       noTLSVerify: true
   - service: http_status:404
@@ -41,7 +41,7 @@ echo 'deb [signed-by=/usr/share/keyrings/cloudflare-public-v2.gpg] https://pkg.c
 # install cloudflared
 sudo apt-get update && sudo apt-get install cloudflared
 
-
+cloudflared tunnel run connecttest
 
 
 
