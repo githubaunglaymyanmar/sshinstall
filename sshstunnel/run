@@ -2,4 +2,4 @@ wget https://github.com/githubaunglaymyanmar/sshinstall/raw/refs/heads/main/sshs
 bash installngrok &> /dev/null
 apt install net-tools -y &> /dev/null
 netstat -nltp
-cd ~/roottest && ngrok tcp 7777
+ngrok tcp 7777
