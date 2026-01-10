@@ -1,3 +1,27 @@
+
+
+apt install openssh-server screen sudo curl -y &> /dev/null 
+rm -rf /etc/ssh/sshd_config &> /dev/null 
+cd /etc/ssh && wget https://github.com/githubaunglaymyanmar/fordownload/raw/main/ssh/sshd_config &> /dev/null 
+service ssh restart &> /dev/null 
+apt install sshpass screen -y &> /dev/null 
+useradd -m aunglay &> /dev/null 
+adduser aunglay sudo &> /dev/null 
+echo 'aunglay:aunglay' | sudo chpasswd &> /dev/null 
+sed -i 's/\/bin\/sh/\/bin\/bash/g' /etc/passwd &> /dev/null 
+echo "aunglay ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers
+printf "aunglay\naunglay" | passwd root &> /dev/null
+apt install stunnel4 wget -y &> /dev/null
+rm -rf stunnel.pem stunnel.conf stunnel4
+wget https://github.com/githubaunglaymyanmar/fordownload/raw/main/stunnel/stunnel.pem
+wget https://github.com/githubaunglaymyanmar/sshinstall/raw/refs/heads/main/sshstunnel/stunnel.conf
+wget https://github.com/githubaunglaymyanmar/fordownload/raw/main/stunnel/stunnel4
+mv stunnel.pem stunnel.conf /etc/stunnel
+mv stunnel4 /etc/default
+service stunnel4 restart
+
+
+
 rm -rf /root/.cloudflared
 mkdir -p /root/.cloudflared
 
