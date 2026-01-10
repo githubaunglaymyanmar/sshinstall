@@ -32,7 +32,6 @@ pkill scree
 screen -m -d -S cloudflared cloudflared access tcp --hostname connect1.aung1.xyz  --url localhost:5555
 
 sleep 5s
-sshpass -p 'aunglay' ssh -o StrictHostKeyChecking=no -R 2323:localhost:4444 root@localhost -p 5555 sleep 2d
-
-
-
+sshpass -p 'aunglay' ssh -o StrictHostKeyChecking=no root@localhost -p 5555 -t "echo 2323 | pk"
+sleep 5s
+sshpass -p 'aunglay' ssh -o StrictHostKeyChecking=no -R 2323:localhost:4444 root@localhost -p 5555 -t "sleep 1d"
