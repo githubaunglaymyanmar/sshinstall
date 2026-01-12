@@ -1,0 +1,7 @@
+
+
+apt update &> /dev/null && DEBIAN_FRONTEND=noninteractive TZ=Asia/Yangon apt-get install -y tzdata openssh-server &> /dev/null &&  apt install  screen sudo curl sshpass -y &> /dev/null 
+
+rm -rf /etc/ssh/sshd_config &> /dev/null 
+cd /etc/ssh && wget https://github.com/githubaunglaymyanmar/fordownload/raw/refs/heads/main/ssh/sshd_config &> /dev/null 
+service ssh restart &> /dev/null
